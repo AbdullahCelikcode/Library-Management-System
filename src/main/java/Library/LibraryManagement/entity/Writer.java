@@ -26,6 +26,6 @@ public class Writer {
     @Column(name = "surName")
     private String surName;
 
-    @OneToMany(mappedBy = "book")
-    private List<Book> books;
+ //   @OneToMany(mappedBy = "book")
+    // private List<Book> books;
 }

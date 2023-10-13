@@ -31,13 +31,15 @@ public class Book {
    @Column(name = "amount")
    private int amount;
 
-   @ManyToOne
-   @JoinColumn(name = "user_id")
-   private User user;
+  // @ManyToOne
+  // @JoinColumn(name = "user_id")
+  // private User user;
 
-   @ManyToOne()
-   @JoinColumn(name = "writer_id")
-   private int writerId;
+   // @ManyToOne()
+   //  @JoinColumn(name = "writers_id")
+   // private int writerId;
+
+
 
 
 

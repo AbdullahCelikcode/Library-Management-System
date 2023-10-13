@@ -26,8 +26,8 @@ public class User {
     private String surName;
 
     @Column(name = "email")
-    private int email;
+    private String email;
 
-    @OneToMany(mappedBy = "book")
-    private List<Book> books;
+  // @OneToMany(mappedBy = "user")
+    //private List<Book> books;
 }
