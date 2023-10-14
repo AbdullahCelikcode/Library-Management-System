@@ -1,11 +1,9 @@
 package Library.LibraryManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Table(name = "books")
 @Entity
@@ -13,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+
 public class Book {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +30,10 @@ public class Book {
    @Column(name = "amount")
    private int amount;
 
-  // @ManyToOne
-  // @JoinColumn(name = "user_id")
-  // private User user;
+   @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+   @JsonIgnore
+   @JoinColumn(name="user_id")
+   private User user;
 
    // @ManyToOne()
    //  @JoinColumn(name = "writers_id")

@@ -1,10 +1,8 @@
 package Library.LibraryManagement.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 @Table(name = "users")
@@ -13,6 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +27,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
-  // @OneToMany(mappedBy = "user")
-    //private List<Book> books;
+   @OneToMany(mappedBy = "user")
+   @JsonIgnore
+    private List<Book> books;
 }

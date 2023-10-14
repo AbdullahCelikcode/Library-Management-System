@@ -2,6 +2,7 @@ package Library.LibraryManagement.Controllers;
 
 import Library.LibraryManagement.abstracts.BookService;
 import Library.LibraryManagement.entity.Book;
+import Library.LibraryManagement.response.GetAllBookResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,15 +10,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping()
 @AllArgsConstructor
 public class BookController {
 
     private BookService bookService;
    @GetMapping("/books")
-    public List<Book> findAll(){
+    public List<GetAllBookResponse> findAll(){
 
         return bookService.findAll();
+    }
+    @GetMapping("/getall")
+    public List<Book> getAll(){
+
+       return  bookService.getAll();
     }
 
     @GetMapping("/books/{bookId}")
