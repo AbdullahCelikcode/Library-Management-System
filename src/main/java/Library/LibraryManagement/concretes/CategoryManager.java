@@ -35,7 +35,7 @@ public class CategoryManager implements CategoryService {
 
     @Override
     public GetByIdCategoryResponse findById(int id) {
-        Category category = this.categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Book is not found"));
+        Category category = this.categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Category is not found"));
         return this.modelMapperService.forResponse().map(category, GetByIdCategoryResponse.class);
     }
 
