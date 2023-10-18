@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+
 @Table(name = "users")
 @Entity
 @AllArgsConstructor
@@ -27,7 +28,7 @@ public class User {
     @Column(name = "email")
     private String email;
 
-   @OneToMany(mappedBy = "user")
-   @JsonIgnore
-    private List<Book> books;
+    @OneToOne(fetch = FetchType.EAGER,mappedBy = "user")
+    private Issue issue;
+
 }

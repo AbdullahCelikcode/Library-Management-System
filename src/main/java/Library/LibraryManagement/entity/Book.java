@@ -13,33 +13,33 @@ import lombok.*;
 @Setter
 
 public class Book {
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   @Column(name = "id")
-   private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
 
-   @Column(name = "isbn")
-   private String isbn;
+    @Column(name = "isbn")
+    private String isbn;
 
-   @Column(name = "name")
-   private String name;
+    @Column(name = "name")
+    private String name;
 
-   @Column(name = "page_numbers")
-   private int pageNumbers;
-
-   @Column(name = "amount")
-   private int amount;
-
-   @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-   @JsonIgnore
-   @JoinColumn(name="user_id")
-   private User user;
-
-   // @ManyToOne()
-   //  @JoinColumn(name = "writers_id")
-   // private int writerId;
+    @Column(name = "page_numbers")
+    private int pageNumbers;
 
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    @JoinColumn(name = "writer_id")
+    private Writer writer;
+
+    @OneToOne(fetch = FetchType.EAGER,mappedBy = "book")
+    private Issue issue;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 
 

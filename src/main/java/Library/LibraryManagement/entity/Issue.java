@@ -3,32 +3,35 @@ package Library.LibraryManagement.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.List;
 
-@Table(name = "writers")
+@Table(name = "issues")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
-public class Writer {
+@Data
+public class Issue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
-    private String name;
+    private String issueDate;
 
-    @Column(name = "surName")
-    private String surName;
+    private String returnDate;
 
-    @OneToMany(mappedBy = "writer")
+    @OneToOne()
+    @JoinColumn(name = "book_id",referencedColumnName = "id")
     @JsonIgnore
-    private List<Book> books;
+    private Book book;
+
+    @OneToOne()
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonIgnore
+    private User user;
+
 
 }

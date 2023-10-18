@@ -1,14 +1,25 @@
 package Library.LibraryManagement.abstracts;
 
 import Library.LibraryManagement.entity.Book;
+import Library.LibraryManagement.request.CreateBookRequest;
+import Library.LibraryManagement.request.UpdateBookRequest;
 import Library.LibraryManagement.response.GetAllBookResponse;
+import Library.LibraryManagement.response.GetByIdBookResponse;
 
 import java.util.List;
 
 public interface BookService {
-   List<GetAllBookResponse> findAll();
-   Book findById(int id);
+    List<GetAllBookResponse> findAll();
 
-   void add(Book book);
-   List<Book> getAll();
+    GetByIdBookResponse findById(int id);
+
+    void add(CreateBookRequest createBookRequest);
+
+    List<GetAllBookResponse> findAllReciveableBooks();
+
+    List<GetAllBookResponse> findReservedBooks();
+
+    void update(UpdateBookRequest updateBookRequest);
+
+    void deleteById(int id);
 }

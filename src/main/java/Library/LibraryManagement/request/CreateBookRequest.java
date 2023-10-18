@@ -1,6 +1,6 @@
-package Library.LibraryManagement.response;
+package Library.LibraryManagement.request;
 
-import Library.LibraryManagement.entity.Issue;
+import Library.LibraryManagement.entity.Category;
 import Library.LibraryManagement.entity.Writer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,13 +9,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class GetAllBookResponse {
-    private int id;
+public class CreateBookRequest {
     private String isbn;
     private String name;
     private int pageNumbers;
-    private Writer writer;
-    private Issue issue;
-
-
+    private int writerId;
+    private int categoryId;
 }
