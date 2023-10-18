@@ -1,10 +1,8 @@
 package Library.LibraryManagement.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 
 @Table(name = "users")
 @Entity

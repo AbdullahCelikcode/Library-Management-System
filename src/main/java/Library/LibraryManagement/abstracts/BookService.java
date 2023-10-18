@@ -1,6 +1,5 @@
 package Library.LibraryManagement.abstracts;
 
-import Library.LibraryManagement.entity.Book;
 import Library.LibraryManagement.request.CreateBookRequest;
 import Library.LibraryManagement.request.UpdateBookRequest;
 import Library.LibraryManagement.response.GetAllBookResponse;

@@ -11,7 +11,6 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

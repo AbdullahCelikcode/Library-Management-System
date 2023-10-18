@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -24,19 +23,18 @@ public class BookManager implements BookService {
     @Override
     public List<GetAllBookResponse> findAll() {
         List<Book> books = bookRepository.findAll();
-        List<GetAllBookResponse> bookResponses = books.stream().map(book ->
+        return books.stream().map(book ->
                 this.modelMapperService.forResponse().map(book, GetAllBookResponse.class)).collect(Collectors.toList());
 
-        return bookResponses;
 
     }
 
 
     @Override
     public GetByIdBookResponse findById(int id) {
-        Book book = this.bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book is not found"));;
-        GetByIdBookResponse response = this.modelMapperService.forResponse().map(book, GetByIdBookResponse.class);
-        return response;
+        Book book = this.bookRepository.findById(id).orElseThrow(() -> new RuntimeException("Book is not found"));
+        return this.modelMapperService.forResponse().map(book, GetByIdBookResponse.class);
+
     }
 
     @Override
@@ -47,22 +45,21 @@ public class BookManager implements BookService {
 
     @Override
     public List<GetAllBookResponse> findAllReciveableBooks() {
-        List<GetAllBookResponse> responses = bookRepository.findAll().stream()
+        return bookRepository.findAll().stream()
                 .filter(book -> book.getIssue() == null)
                 .map(book -> modelMapperService.forResponse().map(book, GetAllBookResponse.class))
                 .collect(Collectors.toList());
-        return responses;
+
     }
 
 
     @Override
     public List<GetAllBookResponse> findReservedBooks() {
-        List<GetAllBookResponse> responses = bookRepository.findAll().stream()
+        return bookRepository.findAll().stream()
                 .filter(book -> book.getIssue() != null)
                 .map(book -> modelMapperService.forResponse().map(book, GetAllBookResponse.class))
                 .collect(Collectors.toList());
 
-        return responses;
     }
 
     @Override

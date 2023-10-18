@@ -1,14 +1,12 @@
 package Library.LibraryManagement.Controllers;
 
 import Library.LibraryManagement.abstracts.BookService;
-import Library.LibraryManagement.entity.Book;
 import Library.LibraryManagement.request.CreateBookRequest;
 import Library.LibraryManagement.request.UpdateBookRequest;
 import Library.LibraryManagement.response.GetAllBookResponse;
 import Library.LibraryManagement.response.GetByIdBookResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.List;
 
