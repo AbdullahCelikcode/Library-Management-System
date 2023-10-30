@@ -44,7 +44,7 @@ public class BookManager implements BookService {
     }
 
     @Override
-    public List<GetAllBookResponse> findAllReciveableBooks() {
+    public List<GetAllBookResponse> findAllReceivableBooks() {
         return bookRepository.findAll().stream()
                 .filter(book -> book.getIssue() == null)
                 .map(book -> modelMapperService.forResponse().map(book, GetAllBookResponse.class))

@@ -22,26 +22,30 @@ public class CategoryManager implements CategoryService {
 
     @Override
     public void add(CreateCategoryRequest createCategoryRequest) {
-        Category category = this.modelMapperService.forRequest().map(createCategoryRequest, Category.class);
+        Category category = this.modelMapperService.forRequest()
+                .map(createCategoryRequest, Category.class);
         categoryRepository.save(category);
     }
 
     @Override
     public List<GetAllCategoryResponse> findAll() {
         List<Category> categories = categoryRepository.findAll();
-        return categories.stream().map(book ->
-                this.modelMapperService.forResponse().map(book, GetAllCategoryResponse.class)).collect(Collectors.toList());
+        return categories.stream().map(book -> this.modelMapperService.forResponse()
+                .map(book, GetAllCategoryResponse.class))
+                .collect(Collectors.toList());
     }
 
     @Override
     public GetByIdCategoryResponse findById(int id) {
         Category category = this.categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Category is not found"));
-        return this.modelMapperService.forResponse().map(category, GetByIdCategoryResponse.class);
+        return this.modelMapperService.forResponse()
+                .map(category, GetByIdCategoryResponse.class);
     }
 
     @Override
     public void update(UpdateCategoryRequest updateCategoryRequest) {
-        Category category = this.modelMapperService.forRequest().map(updateCategoryRequest, Category.class);
+        Category category = this.modelMapperService.forRequest()
+                .map(updateCategoryRequest, Category.class);
         this.categoryRepository.save(category);
     }
 

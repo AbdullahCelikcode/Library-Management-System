@@ -14,7 +14,7 @@ public interface BookService {
 
     void add(CreateBookRequest createBookRequest);
 
-    List<GetAllBookResponse> findAllReciveableBooks();
+    List<GetAllBookResponse> findAllReceivableBooks();
 
     List<GetAllBookResponse> findReservedBooks();
 

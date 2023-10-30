@@ -33,14 +33,17 @@ public class IssueManager implements IssueService {
     public List<GetAllIssueResponse> getAll() {
         List<Issue> issues = issueRepository.findAll();
         return issues.stream().map(issue ->
-                this.modelMapperService.forResponse().map(issue, GetAllIssueResponse.class)).collect(Collectors.toList());
+                        this.modelMapperService.forResponse()
+                                .map(issue, GetAllIssueResponse.class))
+                .collect(Collectors.toList());
 
 
     }
 
     @Override
     public void update(UpdateIssueRequest updateIssueRequest) {
-        Issue issue = this.modelMapperService.forRequest().map(updateIssueRequest, Issue.class);
+        Issue issue = this.modelMapperService.forRequest()
+                .map(updateIssueRequest, Issue.class);
         this.issueRepository.save(issue);
     }
 
@@ -53,7 +56,8 @@ public class IssueManager implements IssueService {
     @Override
     public GetByIdIssueResponse getById(int id) {
         Issue issue = this.issueRepository.findById(id).orElseThrow(() -> new RuntimeException("Issue is not found"));
-        return this.modelMapperService.forResponse().map(issue, GetByIdIssueResponse.class);
+        return this.modelMapperService.forResponse()
+                .map(issue, GetByIdIssueResponse.class);
     }
 
 }

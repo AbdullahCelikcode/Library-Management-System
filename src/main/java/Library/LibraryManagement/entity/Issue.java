@@ -26,7 +26,7 @@ public class Issue {
     private String returnDate;
 
     @OneToOne()
-    @JoinColumn(name = "book_id",referencedColumnName = "id")
+    @JoinColumn(name = "book_id", referencedColumnName = "id")
     @JsonIgnore
     private Book book;
 
